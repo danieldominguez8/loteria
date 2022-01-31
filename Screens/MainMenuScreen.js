@@ -1,12 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, Button, View } from 'react-native';
 
-const MainMenuScreen = () => {
+const MainMenuScreen = ({ navigation }) => {
+
+    function navigate() {
+        navigation.navigate('Game');
+    }
     return (
         <View style={styles.mainView}>
             <Text style={styles.textStyle}>Loteria</Text>
             <Button
                 title="Begin Game"
+                onPress={navigate}
             />
         </View>
     )

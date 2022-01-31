@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, Button, View } from 'react-native';
+import { StyleSheet, Text, Button, View, requireNativeComponent, Image } from 'react-native';
 
 const GameScreen = () => {
     return (
         <View style={styles.mainView}>
-            <Text style={styles.textStyle}>Game</Text>
+            <Image source={require('/Users/dannydominguez/loteria/assets/02.png')} />
             <Button
-                title="Begin Game"
+                title="Pause"
             />
         </View>
     )
