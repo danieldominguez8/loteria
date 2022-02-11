@@ -1,27 +1,56 @@
-import React from 'react';
-import { StyleSheet, Text, Button, View, requireNativeComponent, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, Button, View, requireNativeComponent, Image, TouchableHighlight } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 const GameScreen = () => {
+
     return (
-        <View style={styles.mainView}>
-            <Image source={require('/Users/dannydominguez/loteria/assets/02.png')} />
-            <Button
-                title="Pause"
-            />
+        <View style={styles.container}>
+            <View style={styles.fixToText}>
+                <Button
+                    title="Shuffle"
+                    onPress={() => alert('Shuffle button pressed')}
+                />
+
+                <Button
+                    title="Pause"
+                    onPress={() => alert('Pause button pressed')}
+                />
+            </View>
+
+            <View>
+                <TouchableHighlight
+                    style={{ backgroundColor: "red", resizeMode: "contain" }}
+                    onPress={() => {
+                    }}
+                >
+                    <Image
+                        style={styles.ImageStyle}
+                        source={require('../assets/01.png')}
+                    />
+                </TouchableHighlight>
+            </View>
         </View>
+
     )
 }
 
 const styles = StyleSheet.create({
-    mainView: {
+    container: {
         flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
+        marginHorizontal: "5%",
     },
     textStyle: {
         color: 'black',
         fontSize: 50,
+    },
+    ImageStyle: {
+        width: '100%',
+        resizeMode: 'contain'
+    },
+    fixToText: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     }
 });
 export default GameScreen
