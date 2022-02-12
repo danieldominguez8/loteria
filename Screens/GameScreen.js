@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, Dimensions, StyleSheet, Text, Button, View, Image, TouchableHighlight } from 'react-native';
+import { TouchableOpacity, ScrollView, Dimensions, StyleSheet, Text, Button, View, Image, TouchableHighlight, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { shuffle, deckImages } from '../assets/helpers';
 const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'];
@@ -8,38 +8,39 @@ const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13
 const GameScreen = () => {
     const [playingDeck, setDeck] = useState(deck);
     const [count, setCount] = useState(0);
-
+    const [images, setImages] = useState([]);
     function shuffleDeck(count) {
-        count == 0 ?
-            alert('Already Shuffled') :
-            [setDeck(shuffle(deck)), setCount(0), console.log(playingDeck), alert('shuffle')]
+        if (count != 0)
+            [setDeck(shuffle(deck)), setCount(0), setImages([]), console.log(playingDeck)]
     }
 
     function gameOver(count) {
-        [setDeck(shuffle(deck)), setCount(0), console.log(playingDeck), alert('Game Over')]
+        [setDeck(shuffle(deck)), setCount(0), setImages([]), console.log(playingDeck)]
     }
 
     function nextCard(count) {
-        [setCount(count + 1), console.log(count + 1)]
+        [setCount(count + 1), console.log(count + 1), images.push(deckImages[playingDeck[count]])]
     }
-
 
     return (
         <View style={styles.container}>
             <View style={styles.fixToText}>
-                <Button
-                    title="Shuffle"
-                    onPress={
-                        () => {
-                            shuffleDeck(count)
-                        }
-                    }
-                />
+                <View style={styles.buttonContainer}>
+                    <Button
+                        title="Shuffle"
+                        onPress={
+                            () => {
+                                shuffleDeck(count)
+                            }
+                        } s
+                    />
+                </View>
 
-                <Button
+
+                {/* <Button
                     title="Pause"
                     onPress={() => alert('Pause button pressed')} r
-                />
+                /> */}
             </View>
 
             <View>
@@ -62,33 +63,15 @@ const GameScreen = () => {
                 </TouchableHighlight>
             </View>
             <ScrollView
+                ref={(scroll) => { this.scroll = scroll; }}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
+                onContentSizeChange={() => {
+                    this.scroll.scrollToEnd({ animated: true, index: -1 }, 200);
+                }}
             >
-                <Image
-                    style={styles.smallImageStyle}
-                    source={deckImages[playingDeck[count]]}
-                />
-                <Image
-                    style={styles.smallImageStyle}
-                    source={deckImages[playingDeck[count]]}
-                />
-                <Image
-                    style={styles.smallImageStyle}
-                    source={deckImages[playingDeck[count]]}
-                />
-                <Image
-                    style={styles.smallImageStyle}
-                    source={deckImages[playingDeck[count]]}
-                />
-                <Image
-                    style={styles.smallImageStyle}
-                    source={deckImages[playingDeck[count]]}
-                />
-                <Image
-                    style={styles.smallImageStyle}
-                    source={deckImages[playingDeck[count]]}
-                />
+                {images.map(img => <Image
+                    style={styles.smallImageStyle} source={img} />)}
             </ScrollView>
         </View>
 
@@ -102,19 +85,33 @@ const styles = StyleSheet.create({
     textStyle: {
         color: 'black',
         fontSize: 50,
+        fontFamily: 'Arial'
     },
     ImageStyle: {
         width: Dimensions.get('window').width / 1.2,
         height: Dimensions.get('window').width * 1.57 / 1.2,
+        marginBottom: "3%",
+        marginTop: "1%",
     },
     smallImageStyle: {
-        marginTop: "2%",
         width: Dimensions.get('window').width / 1.1 / 4,
         height: Dimensions.get('window').width * 1.57 / 1.1 / 4,
+
     },
     fixToText: {
+        marginTop: "1%",
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    buttonContainer: {
+        backgroundColor: 'yellow',
+        borderRadius: 75,
+        borderWidth: 1,
     }
 });
+
+const maintainVisibleContentPosition = {
+    autoscrollToTopThreshold: 0,
+    minIndexForVisible: 0,
+}
 export default GameScreen
