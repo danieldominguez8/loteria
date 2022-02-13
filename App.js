@@ -10,8 +10,35 @@ const App: () => Node = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Main Menu" component={MainMenuScreen} />
-        <Stack.Screen name="Game" component={GameScreen} />
+        <Stack.Screen name="Main Menu" component={MainMenuScreen}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: 'blue',
+              height: 5
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              color: 'white',
+              fontSize: 20,
+              fontFamily: 'AvenirNextCondensed-Heavy'
+            }
+          }}
+        />
+        <Stack.Screen name="Game" component={GameScreen}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: 'blue',
+              height: 5
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              color: 'white',
+              fontSize: 20,
+              fontFamily: 'AvenirNextCondensed-Heavy'
+            }
+          }} />
       </Stack.Navigator>
     </NavigationContainer>
 
