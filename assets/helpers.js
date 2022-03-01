@@ -1,5 +1,5 @@
-export const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'];
 
+import Sound from 'react-native-sound';
 
 export function shuffle(deck) {
     for (let i = deck.length; i; i--) {
@@ -8,6 +8,8 @@ export function shuffle(deck) {
     }
     return deck;
 }
+export const deckSound = { one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo }
+
 
 export const deckImages = {
     '1': require('/Users/dannydominguez/loteria/assets/deck/01.png'),
@@ -61,5 +63,348 @@ export const deckImages = {
     '49': require('/Users/dannydominguez/loteria/assets/deck/49.png'),
     '50': require('/Users/dannydominguez/loteria/assets/deck/50.png'),
     '51': require('/Users/dannydominguez/loteria/assets/deck/51.png'),
-    '52': require('/Users/dannydominguez/loteria/assets/deck/52.png')
+    '52': require('/Users/dannydominguez/loteria/assets/deck/52.png'),
+    '53': require('/Users/dannydominguez/loteria/assets/deck/53.png'),
+    '54': require('/Users/dannydominguez/loteria/assets/deck/54.png'),
 }
+
+export const one = new Sound('1.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const two = new Sound('2.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const three = new Sound('3.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const four = new Sound('4.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const five = new Sound('5.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const six = new Sound('6.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const seven = new Sound('7.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const eight = new Sound('8.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const nine = new Sound('9.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const ten = new Sound('10.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const eleven = new Sound('11.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twelve = new Sound('12.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirteen = new Sound('13.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fourteen = new Sound('14.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const fifteen = new Sound('15.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const sixteen = new Sound('16.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const seventeen = new Sound('17.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const eighteen = new Sound('18.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const nineteen = new Sound('19.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const twenty = new Sound('20.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twentyone = new Sound('21.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twentytwo = new Sound('22.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twentythree = new Sound('23.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twentyfour = new Sound('24.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const twentyfive = new Sound('25.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twentysix = new Sound('26.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twentyseven = new Sound('27.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const twentyeight = new Sound('28.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const twentynine = new Sound('29.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const thirty = new Sound('30.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirtyone = new Sound('31.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirtytwo = new Sound('32.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirtythree = new Sound('33.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirtyfour = new Sound('34.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const thirtyfive = new Sound('35.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirtysix = new Sound('36.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirtyseven = new Sound('37.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const thirtyeight = new Sound('38.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const thirtynine = new Sound('39.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const forty = new Sound('40.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fortyone = new Sound('41.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fortytwo = new Sound('42.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fortythree = new Sound('43.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fortyfour = new Sound('44.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const fortyfive = new Sound('45.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fortysix = new Sound('46.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fortyseven = new Sound('47.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fortyeight = new Sound('48.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const fortynine = new Sound('50.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+        return;
+    }
+});
+
+export const fifty = new Sound('elPescado.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+        return;
+    }
+});
+export const fiftyone = new Sound('51.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+export const fiftytwo = new Sound('52.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const fiftythree = new Sound('53.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+export const fiftyfour = new Sound('54.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+
+        return;
+    }
+});
+
+

@@ -1,26 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, ScrollView, Dimensions, StyleSheet, Text, Button, View, Image, TouchableHighlight, Alert, ImageBackground } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { shuffle, deckImages } from '../assets/helpers';
-const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'];
-
+import { one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortyseven, fortysix, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour } from '../assets/helpers';
+import Sound from 'react-native-sound';
+const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54'];
+const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour];
 
 const GameScreen = () => {
     const [playingDeck, setDeck] = useState(deck);
     const [count, setCount] = useState(0);
-    const [images, setImages] = useState([]);
-    function shuffleDeck(count) {
-        if (count != 0)
-            [setDeck(shuffle(deck)), setCount(0), setImages([])]
+    const [images, setImages] = useState([deckImages[playingDeck[count]]]);
+    const [sound, setSound] = useState();
+    const [isPaused, setPause] = useState(false);
+
+    shuffleDeck = () => {
+        [setDeck(shuffle(deck)), setCount(0), setImages([deckImages[playingDeck[0]]])]
     }
 
-    function gameOver(count) {
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (isPaused) { } else {
+                setCount(count => count > 52 ? gameOver() : count + 1);
+                nextCardAuto();
+            }
+
+        }, 2500);
+        return () => clearInterval(interval);
+    }, [isPaused]);
+
+
+
+    playSound = (count) => {
+        deckSound[playingDeck[count + 1] - 1].play(success => {
+            if (success) {
+            } else {
+            }
+        });
+    }
+    gameOver = () => {
         [setDeck(shuffle(deck)), setCount(0), setImages([])]
+        return 0;
     }
 
-    function nextCard(count) {
+    nextCardAuto = () => {
+        images.push(deckImages[playingDeck[count]])
+    }
+
+    nextCard = (count) => {
         [setCount(count + 1), images.push(deckImages[playingDeck[count]])]
     }
+
+    deckSound[playingDeck[count] - 1]?.play();
+
 
     return (
         <ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpg')} style={styles.image}>
@@ -30,27 +62,19 @@ const GameScreen = () => {
                         <TouchableOpacity
                             onPress={
                                 () => {
-                                    shuffleDeck(count)
+                                    [shuffleDeck(), deckSound[playingDeck[0] - 1].play()]
                                 }
                             } >
                             <Text style={styles.textStyle}>SHUFFLE</Text>
                         </TouchableOpacity>
                     </View>
-
-
-                    {/* <Button
-                    title="Pause"
-                    onPress={() => alert('Pause button pressed')} r
-                /> */}
                 </View>
 
                 <View>
                     <TouchableHighlight
                         onPress={
                             () => {
-                                count > 50 ?
-                                    gameOver(count) :
-                                    nextCard(count)
+                                setPause(!isPaused);
                             }
                         }
                     >
