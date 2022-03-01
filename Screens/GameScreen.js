@@ -10,59 +10,53 @@ const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, el
 const GameScreen = () => {
     const [playingDeck, setDeck] = useState(deck);
     const [count, setCount] = useState(0);
-    const [images, setImages] = useState([deckImages[playingDeck[count]]]);
-    const [sound, setSound] = useState();
+    const [images, setImages] = useState([]);
     const [isPaused, setPause] = useState(false);
 
     shuffleDeck = () => {
-        [setDeck(shuffle(deck)), setCount(0), setImages([deckImages[playingDeck[0]]])]
+        [setDeck(shuffle(deck)), setCount(0), setImages([]), setPause(true)]
     }
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (isPaused) { } else {
-                setCount(count => count > 52 ? gameOver() : count + 1);
+            if (!isPaused) {
+                playSound();
                 nextCardAuto();
+                setCount(count => count > 52 ? shuffleDeck() : count + 1);
             }
-
-        }, 2500);
+        }
+            , 3000);
         return () => clearInterval(interval);
     }, [isPaused]);
 
-
-
-    playSound = (count) => {
-        deckSound[playingDeck[count + 1] - 1].play(success => {
-            if (success) {
-            } else {
-            }
-        });
+    getCount = () => {
+        return count;
     }
-    gameOver = () => {
-        [setDeck(shuffle(deck)), setCount(0), setImages([])]
-        return 0;
+    playSound = () => {
+        deckSound[playingDeck[count + 1] - 1]?.play();
     }
 
     nextCardAuto = () => {
         images.push(deckImages[playingDeck[count]])
     }
 
-    nextCard = (count) => {
-        [setCount(count + 1), images.push(deckImages[playingDeck[count]])]
+    displayCard = () => {
+        return deckImages[playingDeck[count]]
     }
 
-    deckSound[playingDeck[count] - 1]?.play();
-
+    if (count == 0 && !isPaused) {
+        deckSound[playingDeck[count] - 1]?.play();
+    }
 
     return (
-        <ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpg')} style={styles.image}>
+        < ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpg')} style={styles.image} >
             <View style={styles.container}>
                 <View style={styles.fixToText}>
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity
                             onPress={
                                 () => {
-                                    [shuffleDeck(), deckSound[playingDeck[0] - 1].play()]
+                                    [shuffleDeck()]
                                 }
                             } >
                             <Text style={styles.textStyle}>SHUFFLE</Text>
@@ -80,7 +74,7 @@ const GameScreen = () => {
                     >
                         <Image
                             style={styles.ImageStyle}
-                            source={deckImages[playingDeck[count]]}
+                            source={displayCard()}
                         />
                     </TouchableHighlight>
                 </View>
@@ -96,7 +90,7 @@ const GameScreen = () => {
                         style={styles.smallImageStyle} source={img} />)}
                 </ScrollView>
             </View>
-        </ImageBackground>
+        </ImageBackground >
     )
 }
 

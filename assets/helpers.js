@@ -1,6 +1,5 @@
-
 import Sound from 'react-native-sound';
-
+Sound.setCategory('Playback');
 export function shuffle(deck) {
     for (let i = deck.length; i; i--) {
         let j = Math.floor(Math.random() * i);
