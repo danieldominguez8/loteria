@@ -1,0 +1,6 @@
+module Pods_loteria_loteriaTests {
+  umbrella header "Pods-loteria-loteriaTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

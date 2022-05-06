@@ -5,16 +5,14 @@ import { shuffle, deckImages } from '../assets/helpers';
 import { one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortyseven, fortysix, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour } from '../assets/helpers';
 import Sound from 'react-native-sound';
 import SelectDropdown from 'react-native-select-dropdown';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { Icon } from '@rneui/themed';
 
 const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54'];
 const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour];
 const speed = [
-    { title: '2 SEG.', delayAmount: 20 },
-    { title: '3 SEG.', delayAmount: 30 },
-    { title: '4 SEG.', delayAmount: 40 },
-    { title: '5 SEG.', delayAmount: 50 },
+    { title: '2 Seg.', delayAmount: 2 },
+    { title: '3 Seg.', delayAmount: 3 },
+    { title: '4 Seg.', delayAmount: 4 },
+    { title: '5 Seg.', delayAmount: 5 },
 ];
 const GameScreen = () => {
     const [firstPass, setPass] = useState(true);
@@ -23,7 +21,7 @@ const GameScreen = () => {
     const [count, setCount] = useState(0);
     const [images, setImages] = useState([]);
     const [isPaused, setPause] = useState(false);
-    const [delay, setDelay] = useState(30);
+    const [delay, setDelay] = useState(3);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -37,7 +35,7 @@ const GameScreen = () => {
                 setTimer(0);
             }
         }
-            , 100);
+            , 1000);
         return () => clearInterval(interval);
     }, [timer]);
 
@@ -61,7 +59,7 @@ const GameScreen = () => {
 
     displayCard = () => {
         if (isPaused) {
-            return require('/Users/dannydominguez/loteria/assets/paused.png')
+            return require('/Users/dannydominguez/loteria/loteriaApple/assets/paused.png')
         } else {
             return deckImages[playingDeck[count]]
         }
@@ -75,7 +73,7 @@ const GameScreen = () => {
     }
 
     return (
-        < ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpg')} style={styles.image} >
+        < ImageBackground source={require('/Users/dannydominguez/loteria/loteriaApple/assets/background.jpg')} style={styles.image} >
             <View style={styles.container}>
                 <View style={styles.fixToText}>
                     <View style={styles.buttonContainer}>
@@ -85,7 +83,7 @@ const GameScreen = () => {
                                     [shuffleDeck()]
                                 }
                             } >
-                            <Text style={styles.textStyle}>SHUFFLE</Text>
+                            <Text style={styles.textStyle}>BARAJEAR</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -154,13 +152,11 @@ const GameScreen = () => {
 const styles = StyleSheet.create({
     container: {
         alignItems: "center",
-
     },
     textStyle: {
         color: 'white',
         fontSize: 30,
         fontFamily: 'AvenirNextCondensed-Heavy',
-
     },
     ImageStyle: {
         width: Dimensions.get('window').width / 1.25,
@@ -168,7 +164,6 @@ const styles = StyleSheet.create({
         marginBottom: "1%",
         marginTop: "1%",
         borderWidth: 8,
-
     },
     smallImageStyle: {
         width: Dimensions.get('window').width / 1.1 / 5,
@@ -176,24 +171,19 @@ const styles = StyleSheet.create({
         borderColor: "black",
         borderWidth: 2,
         marginRight: 5
-
     },
     fixToText: {
         marginTop: "1%",
         flexDirection: 'row',
         paddingHorizontal: 30,
-
-
     },
     buttonContainer: {
-
         height: "100%",
-        width: "33%",
+        width: "45%",
         backgroundColor: 'blue',
         borderRadius: 15,
         borderWidth: 2,
         alignItems: "center",
-
     },
     image: {
         width: '100%',
@@ -202,21 +192,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     dropdown4BtnStyle: {
-
         width: '40%',
         height: '100%',
         backgroundColor: 'blue',
         borderWidth: 2,
     },
     space: {
-        width: "10%",
+        width: "5%",
     },
     dropdown4BtnTxtStyle: { color: '#444', textAlign: 'left' },
-    dropdown4DropdownStyle: { backgroundColor: '#EFEFEF' },
+
     dropdown4RowStyle: {
         backgroundColor: 'blue',
         borderBottomColor: 'black',
-
     },
 
 });
