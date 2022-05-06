@@ -10,7 +10,7 @@ const MainMenuScreen = ({ navigation }) => {
     return (
         <View style={styles.mainView}>
 
-            <ImageBackground source={require('/Users/dannydominguez/loteria/loteriaApple/assets/background.jpg')} style={styles.image}>
+            <ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpg')} style={styles.image}>
                 <View style={styles.textContainer}>
                     <Text style={styles.textStyle}>LOTERIA</Text>
                 </View>

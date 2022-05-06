@@ -9,10 +9,11 @@ import SelectDropdown from 'react-native-select-dropdown';
 const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54'];
 const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour];
 const speed = [
-    { title: '2 Seg.', delayAmount: 2 },
-    { title: '3 Seg.', delayAmount: 3 },
-    { title: '4 Seg.', delayAmount: 4 },
-    { title: '5 Seg.', delayAmount: 5 },
+    { title: '1 Seg.', delayAmount: 10 },
+    { title: '2 Seg.', delayAmount: 20 },
+    { title: '3 Seg.', delayAmount: 30 },
+    { title: '4 Seg.', delayAmount: 40 },
+    { title: '5 Seg.', delayAmount: 50 },
 ];
 const GameScreen = () => {
     const [firstPass, setPass] = useState(true);
@@ -21,7 +22,7 @@ const GameScreen = () => {
     const [count, setCount] = useState(0);
     const [images, setImages] = useState([]);
     const [isPaused, setPause] = useState(false);
-    const [delay, setDelay] = useState(3);
+    const [delay, setDelay] = useState(30);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -35,7 +36,7 @@ const GameScreen = () => {
                 setTimer(0);
             }
         }
-            , 1000);
+            , 100);
         return () => clearInterval(interval);
     }, [timer]);
 
@@ -59,7 +60,7 @@ const GameScreen = () => {
 
     displayCard = () => {
         if (isPaused) {
-            return require('/Users/dannydominguez/loteria/loteriaApple/assets/paused.png')
+            return require('/Users/dannydominguez/loteria/assets/paused.png')
         } else {
             return deckImages[playingDeck[count]]
         }
@@ -73,7 +74,7 @@ const GameScreen = () => {
     }
 
     return (
-        < ImageBackground source={require('/Users/dannydominguez/loteria/loteriaApple/assets/background.jpg')} style={styles.image} >
+        < ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpg')} style={styles.image} >
             <View style={styles.container}>
                 <View style={styles.fixToText}>
                     <View style={styles.buttonContainer}>
