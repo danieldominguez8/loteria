@@ -1,6 +1,0 @@
-module Pods_loteria {
-  umbrella header "Pods-loteria-umbrella.h"
-
-  export *
-  module * { export * }
-}
