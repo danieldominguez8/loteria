@@ -2,69 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { TouchableOpacity, ScrollView, Dimensions, StyleSheet, Text, Button, View, Image, TouchableHighlight, Alert, ImageBackground } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { shuffle, deckImages, deck, speed } from '../assets/helpers';
-import { one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortyseven, fortysix, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour } from '../assets/helpers';
+import { zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortyseven, fortysix, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour } from '../assets/helpers';
 import Sound from 'react-native-sound';
 import SelectDropdown from 'react-native-select-dropdown';
-
 const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour];
 
-
 const GameScreen = () => {
-    const [firstPass, setPass] = useState(true);
+    const [firstPass, setFirst] = useState(true);
+    const [firstSound, setFirstSound] = useState(true);
+    const [shuffled, setShuffle] = useState(false);
     const [playingDeck, setDeck] = useState(deck);
-    const [timer, setTimer] = useState(0);
+    const [timer, setTimer] = useState(-30);
     const [count, setCount] = useState(0);
     const [images, setImages] = useState([]);
     const [isPaused, setPause] = useState(false);
-    const [delay, setDelay] = useState(30);
+    const [delay, setDelay] = useState(40);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (timer === delay && !isPaused) {
+            if (!shuffled) {
+                shuffleDeck();
+                setShuffle(true);
+            }
+            if (firstPass) {
+                zero?.play();
+                setFirst(false);
+            }
+            if (firstSound && timer == 0 && !isPaused) {
+                deckSound[playingDeck[count] - 1]?.play();
+                setFirstSound(false);
+            }
+            if (!firstPass && timer === delay && !isPaused) {
                 playSound();
                 nextCardAuto();
-                setCount(count => count > 52 ? shuffleDeck() : count + 1);
-            }
-            setTimer(timer + 1);
-            if (timer > delay) {
                 setTimer(0);
+                setCount(count => count > 52 ? shuffleDeck() : setCount(count + 1));
+            }
+            if (!isPaused && timer < delay) {
+                setTimer(timer + 1);
             }
         }
             , 100);
         return () => clearInterval(interval);
-    }, [timer]);
+    }, [timer, isPaused]);
 
     shuffleDeck = () => {
-        [setDeck(shuffle(deck)), setCount(0), setImages([]), setPause(false), setTimer(0)]
-    }
-
-    getCount = () => {
-        return count;
+        [setDeck(shuffle(deck)), setCount(0), setImages([]), setPause(false), setTimer(-20), setFirst(true), setFirstSound(true)]
     }
     playSound = () => {
         deckSound[playingDeck[count + 1] - 1]?.play();
     }
-
     nextCardAuto = () => {
         images.push(deckImages[playingDeck[count]])
     }
     nextCardPause = () => {
         images.push(deckImages[playingDeck[count - 1]])
     }
-
     displayCard = () => {
         if (isPaused) {
             return require('/Users/dannydominguez/loteria/assets/paused.png')
         } else {
             return deckImages[playingDeck[count]]
         }
-    }
-    if (firstPass) {
-        shuffleDeck();
-        setPass(false);
-    }
-    if (count == 0 && !isPaused && timer == 0) {
-        deckSound[playingDeck[count] - 1]?.play();
     }
 
     return (
@@ -92,7 +91,7 @@ const GameScreen = () => {
                         rowStyle={styles.dropdown4RowStyle}
                         rowTextStyle={styles.textStyle}
                         data={speed}
-                        defaultValueByIndex={1}
+                        defaultValueByIndex={3}
                         onSelect={(selectedItem, index) => {
                             setDelay(selectedItem.delayAmount);
 
@@ -112,13 +111,6 @@ const GameScreen = () => {
                         onPress={
                             () => {
                                 setPause(!isPaused);
-
-                                if (isPaused) {
-                                    setTimer(0);
-                                    nextCardAuto();
-                                    setCount(count => count > 52 ? shuffleDeck() : count + 1);
-                                    playSound();
-                                }
                             }
                         }
                     >

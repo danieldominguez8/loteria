@@ -7,7 +7,6 @@ export function shuffle(deck) {
     }
     return deck;
 }
-
 export const deck = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54'];
 export const speed = [
     { title: '1 Seg.', delayAmount: 10 },
@@ -15,6 +14,11 @@ export const speed = [
     { title: '3 Seg.', delayAmount: 30 },
     { title: '4 Seg.', delayAmount: 40 },
     { title: '5 Seg.', delayAmount: 50 },
+    { title: '6 Seg.', delayAmount: 60 },
+    { title: '7 Seg.', delayAmount: 70 },
+    { title: '8 Seg.', delayAmount: 80 },
+    { title: '9 Seg.', delayAmount: 90 },
+    { title: '10 Seg.', delayAmount: 100 }
 ];
 
 export const deckImages = {
@@ -73,7 +77,12 @@ export const deckImages = {
     '53': require('/Users/dannydominguez/loteria/assets/deck/53.png'),
     '54': require('/Users/dannydominguez/loteria/assets/deck/54.png'),
 }
+export const zero = new Sound('0.m4a', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
 
+        return;
+    }
+});
 export const one = new Sound('1.m4a', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
 
