@@ -5,6 +5,7 @@ import { shuffle, deckImages, deck, speed } from '../assets/helpers';
 import { zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortyseven, fortysix, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour } from '../assets/helpers';
 import Sound from 'react-native-sound';
 import SelectDropdown from 'react-native-select-dropdown';
+import KeepAwake from '@sayem314/react-native-keep-awake';
 const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour];
 
 const GameScreen = () => {
@@ -68,6 +69,7 @@ const GameScreen = () => {
 
     return (
         < ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpeg')} style={styles.image} >
+            <KeepAwake />
             <View style={styles.container}>
                 <View style={styles.fixToText}>
                     <View style={styles.buttonContainer}>
@@ -94,7 +96,6 @@ const GameScreen = () => {
                         defaultValueByIndex={3}
                         onSelect={(selectedItem, index) => {
                             setDelay(selectedItem.delayAmount);
-
                         }}
                         buttonTextAfterSelection={(selectedItem, index) => {
                             return selectedItem.title;
@@ -187,8 +188,6 @@ const styles = StyleSheet.create({
     space: {
         width: "5%",
     },
-    dropdown4BtnTxtStyle: { color: '#444', textAlign: 'left' },
-
     dropdown4RowStyle: {
         backgroundColor: 'blue',
         borderBottomColor: 'black',
