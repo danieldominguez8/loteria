@@ -16,9 +16,6 @@ export const speed = [
     { title: '5 SEG.', delayAmount: 50 },
     { title: '6 SEG.', delayAmount: 60 },
     { title: '7 SEG.', delayAmount: 70 },
-    { title: '8 SEG.', delayAmount: 80 },
-    { title: '9 SEG.', delayAmount: 90 },
-    { title: '10 SEG.', delayAmount: 100 }
 ];
 
 export const deckImages = {

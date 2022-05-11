@@ -13,7 +13,7 @@ const GameScreen = () => {
     const [firstSound, setFirstSound] = useState(true);
     const [shuffled, setShuffle] = useState(false);
     const [playingDeck, setDeck] = useState(deck);
-    const [timer, setTimer] = useState(-30);
+    const [timer, setTimer] = useState(-20);
     const [count, setCount] = useState(0);
     const [images, setImages] = useState([]);
     const [isPaused, setPause] = useState(false);
@@ -41,6 +41,9 @@ const GameScreen = () => {
             }
             if (!isPaused && timer < delay) {
                 setTimer(timer + 1);
+            }
+            if (!isPaused && timer > delay) {
+                setTimer(0);
             }
         }
             , 100);
