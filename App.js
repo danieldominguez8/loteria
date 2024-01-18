@@ -14,7 +14,7 @@ const App: () => Node = () => {
           options={{
             title: '',
             headerStyle: {
-              backgroundColor: 'blue',
+              backgroundColor: 'lightskyblue',
               height: 5
             },
             headerTintColor: '#fff',
@@ -29,7 +29,7 @@ const App: () => Node = () => {
           options={{
             title: '',
             headerStyle: {
-              backgroundColor: 'blue',
+              backgroundColor: 'lightskyblue',
               height: 5
             },
             headerTintColor: '#fff',

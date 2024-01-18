@@ -10,7 +10,7 @@ const MainMenuScreen = ({ navigation }) => {
     return (
         <View style={styles.mainView}>
 
-            <ImageBackground source={require('/Users/chakra/loteria/assets/background.jpeg')} style={styles.image}>
+            <ImageBackground source={require('/Users/chakra/loteria/assets/background.png')} style={styles.image}>
                 <View style={styles.textContainer}>
                     <Text style={styles.textStyle}>LOTERIA</Text>
                 </View>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     textContainer: {
-        backgroundColor: 'blue',
+        backgroundColor: 'lightskyblue',
         width: '80%',
         height: '15%',
         borderRadius: 30,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     buttonContainer: {
-        backgroundColor: 'blue',
+        backgroundColor: 'lightskyblue',
         width: '32.5%',
         height: '7%',
         borderRadius: 90,

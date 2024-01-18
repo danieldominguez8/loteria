@@ -18,7 +18,12 @@ const GameScreen = () => {
     const [images, setImages] = useState([]);
     const [isPaused, setPause] = useState(false);
     const [delay, setDelay] = useState(40);
-
+    const handleShufflePress = () => {
+        shuffleDeck();
+    };
+    const handlePauseToggle = () => {
+        setPause(!isPaused);
+    };
     useEffect(() => {
         const interval = setInterval(() => {
             if (!shuffled) {
@@ -57,33 +62,29 @@ const GameScreen = () => {
         deckSound[playingDeck[count + 1] - 1]?.play();
     }
     nextCardAuto = () => {
-        images.push(deckImages[playingDeck[count]])
+        setImages(prevImages => [...prevImages, deckImages[playingDeck[count]]]);
     }
+    
     nextCardPause = () => {
-        images.push(deckImages[playingDeck[count - 1]])
+        setImages(prevImages => [...prevImages, deckImages[playingDeck[count - 1]]]);
     }
     displayCard = () => {
         if (isPaused) {
-            return require('/Users/dannydominguez/loteria/assets/paused.png')
+            return require('/Users/chakra/loteria/assets/paused.png')
         } else {
             return deckImages[playingDeck[count]]
         }
     }
 
     return (
-        < ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpeg')} style={styles.image} >
+        < ImageBackground source={require('/Users/chakra/loteria/assets/background.png')} style={styles.image} >
             <KeepAwake />
             <View style={styles.container}>
                 <View style={styles.fixToText}>
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity
-                            onPress={
-                                () => {
-                                    [shuffleDeck()]
-                                }
-                            } >
-                            <Text style={styles.textStyle}>BARAJEAR</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity onPress={handleShufflePress}>
+                        <Text style={styles.textStyle}>BARAJEAR</Text>
+                    </TouchableOpacity>
 
                     </View>
                     <View style={styles.space} />
@@ -110,18 +111,9 @@ const GameScreen = () => {
 
                 </View>
 
-                <View>
-                    <TouchableHighlight
-                        onPress={
-                            () => {
-                                setPause(!isPaused);
-                            }
-                        }
-                    >
-                        <Image
-                            style={styles.ImageStyle}
-                            source={displayCard()}
-                        />
+                <View style={styles.container}>
+                    <TouchableHighlight onPress={handlePauseToggle}>
+                        <Image style={styles.ImageStyle} source={displayCard()} />
                     </TouchableHighlight>
                 </View>
                 <ScrollView
@@ -132,8 +124,13 @@ const GameScreen = () => {
                         this.scroll.scrollToEnd({ animated: true, index: -1 }, 200);
                     }}
                 >
-                    {images.map(img => <Image
-                        style={styles.smallImageStyle} source={img} />)}
+                    {images.map((img, index) => (
+                        <Image
+                            key={index} // Adding a key here
+                            style={styles.smallImageStyle}
+                            source={img}
+                        />
+                    ))}
                 </ScrollView>
             </View>
         </ImageBackground >
@@ -150,17 +147,17 @@ const styles = StyleSheet.create({
         fontFamily: 'AvenirNextCondensed-Heavy',
     },
     ImageStyle: {
-        width: Dimensions.get('window').width / 1.25,
-        height: Dimensions.get('window').width * 1.57 / 1.25,
-        marginBottom: "1%",
-        marginTop: "1%",
-        borderWidth: 8,
+        width: Dimensions.get('window').width / 1.15,
+        height: Dimensions.get('window').width * 1.57 / 1.15,
+        marginBottom: "0%",
+        marginTop: "0%",
+        borderWidth: 0,
     },
     smallImageStyle: {
         width: Dimensions.get('window').width / 1.1 / 5,
         height: Dimensions.get('window').width * 1.57 / 1.1 / 5,
         borderColor: "black",
-        borderWidth: 3,
+        borderWidth: 0,
         marginRight: 5
     },
     fixToText: {
@@ -171,7 +168,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         height: "100%",
         width: "45%",
-        backgroundColor: 'blue',
+        backgroundColor: 'lightskyblue',
         borderRadius: 15,
         borderWidth: 2,
         alignItems: "center",
@@ -185,14 +182,14 @@ const styles = StyleSheet.create({
     dropdown4BtnStyle: {
         width: '40%',
         height: '100%',
-        backgroundColor: 'blue',
+        backgroundColor: 'lightskyblue',
         borderWidth: 2,
     },
     space: {
         width: "5%",
     },
     dropdown4RowStyle: {
-        backgroundColor: 'blue',
+        backgroundColor: 'lightskyblue',
         borderBottomColor: 'black',
     },
 
