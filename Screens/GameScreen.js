@@ -145,19 +145,20 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         color: 'white',
-        fontSize: 30,
+        fontSize: 25,
         fontFamily: 'AvenirNextCondensed-Heavy',
     },
     ImageStyle: {
-        width: Dimensions.get('window').width / 1.15,
-        height: Dimensions.get('window').width * 1.57 / 1.15,
+        width: Dimensions.get('window').width / 1.2,
+        height: Dimensions.get('window').height  / 1.50,
         marginBottom: "2%",
         marginTop: "2%",
         borderWidth: 0,
+        resizeMode: 'stretch',
     },
     pausedHighlight: {
-        width: Dimensions.get('window').width / 1.15,
-        height: Dimensions.get('window').width * 1.57 / 1.15,
+        width: Dimensions.get('window').width / 1.20,
+        height: Dimensions.get('window').height / 1.50,
         marginBottom: "2%",
         marginTop: "2%",
         borderWidth: 15,
@@ -165,10 +166,11 @@ const styles = StyleSheet.create({
     },
     smallImageStyle: {
         width: Dimensions.get('window').width / 1.1 / 5,
-        height: Dimensions.get('window').width * 1.57 / 1.1 / 5,
+        height: Dimensions.get('window').height /1.50/ 5,
         borderColor: "black",
         borderWidth: 0,
-        marginRight: 5
+        marginRight: 5,
+        resizeMode: 'stretch',
     },
     fixToText: {
         marginTop: "1%",
@@ -190,10 +192,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     space: {
-        width: "10%",
+        width: "8%",
     },
     dropdown4BtnStyle: {
-        width: '45%',
+        width: '43%',
         height: '100%',
         backgroundColor: '#42a1c3',
         borderWidth: 2,

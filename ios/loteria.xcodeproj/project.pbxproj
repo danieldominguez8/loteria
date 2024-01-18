@@ -368,7 +368,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -663,7 +663,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = loteriaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -690,7 +690,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = GGJXT9B959;
 				INFOPLIST_FILE = loteriaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -711,16 +711,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 82796F3AF1E67A45BD59BD2B /* Pods-loteria.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = GGJXT9B959;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = loteria/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -745,15 +746,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A2683D10F079A1B4C870741 /* Pods-loteria.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = GGJXT9B959;
 				INFOPLIST_FILE = loteria/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
