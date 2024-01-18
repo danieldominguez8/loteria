@@ -8,7 +8,8 @@ import SelectDropdown from 'react-native-select-dropdown';
 import KeepAwake from '@sayem314/react-native-keep-awake';
 const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour];
 
-const GameScreen = () => {
+const GameScreen = ({ route, navigation }) => {
+    const { voiceType } = route.params;
     const [firstPass, setFirst] = useState(true);
     const [firstSound, setFirstSound] = useState(true);
     const [shuffled, setShuffle] = useState(false);
@@ -64,14 +65,14 @@ const GameScreen = () => {
     }
     displayCard = () => {
         if (isPaused) {
-            return require('/Users/dannydominguez/loteria/assets/paused.png')
+            return require('/Users/chakra/loteria/assets/paused.png')
         } else {
             return deckImages[playingDeck[count]]
         }
     }
 
     return (
-        < ImageBackground source={require('/Users/dannydominguez/loteria/assets/background.jpeg')} style={styles.image} >
+        < ImageBackground source={require('/Users/chakra/loteria/assets/background.jpeg')} style={styles.image} >
             <KeepAwake />
             <View style={styles.container}>
                 <View style={styles.fixToText}>
@@ -90,7 +91,7 @@ const GameScreen = () => {
                     <SelectDropdown
 
                         buttonStyle={styles.dropdown4BtnStyle}
-                        buttonTextStyle={styles.textStyle}
+                        buttonTextStyle={styles.dropdownButtonStyle}
                         dropdownIconPosition={'right'}
                         dropdownStyle={styles.dropdown4DropdownStyle}
                         rowStyle={styles.dropdown4RowStyle}
