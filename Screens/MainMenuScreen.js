@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     textContainer: {
-        backgroundColor: 'lightskyblue',
+        backgroundColor: '#42a1c3',
         width: '80%',
         height: '15%',
         borderRadius: 30,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     buttonContainer: {
-        backgroundColor: 'lightskyblue',
+        backgroundColor: '#42a1c3',
         width: '32.5%',
         height: '7%',
         borderRadius: 90,

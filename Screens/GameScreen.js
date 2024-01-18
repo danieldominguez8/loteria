@@ -112,8 +112,10 @@ const GameScreen = () => {
                 </View>
 
                 <View style={styles.container}>
-                    <TouchableHighlight onPress={handlePauseToggle}>
-                        <Image style={styles.ImageStyle} source={displayCard()} />
+                    <TouchableHighlight 
+                    underlayColor="#transparent"
+                    onPress={handlePauseToggle}>
+                        <Image style={isPaused ? styles.pausedHighlight : styles.ImageStyle} source={displayCard()} />
                     </TouchableHighlight>
                 </View>
                 <ScrollView
@@ -149,9 +151,17 @@ const styles = StyleSheet.create({
     ImageStyle: {
         width: Dimensions.get('window').width / 1.15,
         height: Dimensions.get('window').width * 1.57 / 1.15,
-        marginBottom: "0%",
-        marginTop: "0%",
+        marginBottom: "2%",
+        marginTop: "2%",
         borderWidth: 0,
+    },
+    pausedHighlight: {
+        width: Dimensions.get('window').width / 1.15,
+        height: Dimensions.get('window').width * 1.57 / 1.15,
+        marginBottom: "2%",
+        marginTop: "2%",
+        borderWidth: 15,
+        borderRadius: 10,
     },
     smallImageStyle: {
         width: Dimensions.get('window').width / 1.1 / 5,
@@ -168,8 +178,8 @@ const styles = StyleSheet.create({
     buttonContainer: {
         height: "100%",
         width: "45%",
-        backgroundColor: 'lightskyblue',
-        borderRadius: 15,
+        backgroundColor: '#42a1c3',
+        borderRadius: 10,
         borderWidth: 2,
         alignItems: "center",
     },
@@ -179,20 +189,33 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    dropdown4BtnStyle: {
-        width: '40%',
-        height: '100%',
-        backgroundColor: 'lightskyblue',
-        borderWidth: 2,
-    },
     space: {
-        width: "5%",
+        width: "10%",
+    },
+    dropdown4BtnStyle: {
+        width: '45%',
+        height: '100%',
+        backgroundColor: '#42a1c3',
+        borderWidth: 2,
+        borderRadius: 10,
+        borderColor: 'black', // Ensure border color is transparent
+        overflow: 'hidden' // This will prevent inner elements from spilling out
     },
     dropdown4RowStyle: {
-        backgroundColor: 'lightskyblue',
+        backgroundColor: '#42a1c3',
         borderBottomColor: 'black',
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: 'black', // Ensure border color is transparent
+        overflow: 'hidden' // This will prevent inner elements from spilling out
     },
-
+    dropdown4DropdownStyle: {
+        // If you have additional styles for the dropdown itself, make sure it has no white background
+        backgroundColor: 'transparent', // Set background color to transparent
+        borderRadius: 10,
+        borderWidth: 0, // Remove border or set the border color to transparent
+        overflow: 'hidden' // This will prevent inner elements from spilling out
+    },
 });
 
 const maintainVisibleContentPosition = {
