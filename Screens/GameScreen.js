@@ -8,6 +8,17 @@ import SelectDropdown from 'react-native-select-dropdown';
 import KeepAwake from '@sayem314/react-native-keep-awake';
 const deckSound = [one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, forty, fortyone, fortytwo, fortythree, fortyfour, fortyfive, fortysix, fortyseven, fortyeight, fortynine, fifty, fiftyone, fiftytwo, fiftythree, fiftyfour];
 
+const playSound = (soundFileName) => {
+    const sound = new Sound(soundFileName, Sound.MAIN_BUNDLE, (error) => {
+        if (error) {
+            console.error('Failed to load the sound', soundFileName, error);
+        } else {
+            sound.play(() => {
+                sound.release(); // Release the audio object once the sound has played
+            });
+        }
+    });
+};
 const GameScreen = () => {
     const [firstPass, setFirst] = useState(true);
     const [firstSound, setFirstSound] = useState(true);
@@ -31,15 +42,15 @@ const GameScreen = () => {
                 setShuffle(true);
             }
             if (firstPass) {
-                zero?.play();
+                playSound(zero);
                 setFirst(false);
             }
             if (firstSound && timer == 0 && !isPaused) {
-                deckSound[playingDeck[count] - 1]?.play();
+                playSound(deckSound[playingDeck[count] - 1]);
                 setFirstSound(false);
             }
             if (!firstPass && timer === delay && !isPaused) {
-                playSound();
+                playSoundNow();
                 nextCardAuto();
                 setTimer(0);
                 setCount(count => count > 52 ? shuffleDeck() : setCount(count + 1));
@@ -58,8 +69,8 @@ const GameScreen = () => {
     shuffleDeck = () => {
         [setDeck(shuffle(deck)), setCount(0), setImages([]), setPause(false), setTimer(-20), setFirst(true), setFirstSound(true)]
     }
-    playSound = () => {
-        deckSound[playingDeck[count + 1] - 1]?.play();
+    playSoundNow = () => {
+        playSound(deckSound[playingDeck[count + 1] - 1]);
     }
     nextCardAuto = () => {
         setImages(prevImages => [...prevImages, deckImages[playingDeck[count]]]);
