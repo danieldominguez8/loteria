@@ -70,14 +70,14 @@ const GameScreen = () => {
     }
     displayCard = () => {
         if (isPaused) {
-            return require('/Users/chakra/loteria/assets/paused.png')
+            return require('/Users/dangy/loteria/assets/paused.png')
         } else {
             return deckImages[playingDeck[count]]
         }
     }
 
     return (
-        < ImageBackground source={require('/Users/chakra/loteria/assets/background.png')} style={styles.image} >
+        < ImageBackground source={require('/Users/dangy/loteria/assets/background.png')} style={styles.image} >
             <KeepAwake />
             <View style={styles.container}>
                 <View style={styles.fixToText}>

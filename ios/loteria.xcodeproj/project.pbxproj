@@ -663,7 +663,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = loteriaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -690,7 +690,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = GGJXT9B959;
 				INFOPLIST_FILE = loteriaTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
